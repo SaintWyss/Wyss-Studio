@@ -1,0 +1,22 @@
+services:
+  api:
+    build:
+      context: ./apps/api
+    environment:
+      WYSS_STUDIO_DATA: /data
+    volumes:
+      - wyss-studio-data:/data
+    restart: unless-stopped
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    ports:
+      - "8080:80"
+    depends_on:
+      - api
+    restart: unless-stopped
+
+volumes:
+  wyss-studio-data:

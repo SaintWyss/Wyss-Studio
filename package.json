@@ -1,0 +1,15 @@
+{
+  "name": "wyss-studio",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": ["apps/web"],
+  "scripts": {
+    "dev": "npm --workspace @wyss-studio/web run dev",
+    "build": "npm --workspace @wyss-studio/web run build",
+    "lint": "npm --workspace @wyss-studio/web run lint",
+    "test": "npm --workspace @wyss-studio/web run test"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
