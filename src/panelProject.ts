@@ -29,14 +29,20 @@ const C=(p:string,d:Part):StudioComponent=>({
 const PAGE=64;
 const px=(pageX:number)=>PAGE+pageX;
 
-// Rail: marca circular, 5 iconos de 48 px y el estado de conexión al pie.
-const NAV=[['⌂','inicio'],['⚡','hogar'],['♪','media'],['☰','agenda'],['⚙','sistema']] as const;
+// Rail: marca, 5 iconos de 48 px, CTA de conversación y el estado de conexión al pie.
+// El ícono de Hogar es un foco dibujado (bulbo + casquillo): Montserrat no trae bombita.
+const NAV=[['⌂','inicio'],['','hogar'],['♪','media'],['☰','agenda'],['⚙','sistema']] as const;
 const rail=(sel:number):StudioComponent[]=>[
   C('rail',{kind:'card',x:0,y:0,width:64,height:480,background:T.surface,radius:0}),
   C('brand',{kind:'chip',x:13,y:12,width:38,height:38,label:'W',background:T.coral,color:'#FFFFFF',radius:19,fontSize:16}),
   ...NAV.map(([ic,dest],i)=>C('nav',{kind:'button',x:8,y:64+i*56,width:48,height:48,label:ic,
     background:i===sel?T.coralBg:T.surface,color:i===sel?T.coral:T.muted,radius:16,fontSize:20,
     action:{type:'navigate',value:dest}})),
+  // Foco dibujado dentro del botón de Hogar (tokens: coralInk activo / muted inactivo).
+  C('bulbG',{kind:'chip',x:22,y:135,width:19,height:19,label:'',background:sel===1?T.coralInk:T.muted,radius:10}),
+  C('bulbB',{kind:'chip',x:27,y:149,width:9,height:7,label:'',background:sel===1?T.coralInk:T.muted,radius:2}),
+  // Hablar con Wyss: única entrada manual a la conversación (tokens::conversation_button).
+  C('talk',{kind:'button',x:8,y:356,width:48,height:48,label:'✎',background:T.coral,color:'#FFFFFF',radius:24,fontSize:20,action:{type:'navigate',value:'conversacion'}}),
   C('conn',{kind:'text',x:22,y:446,width:24,height:20,label:'≋',color:T.red,fontSize:16}),
 ];
 
