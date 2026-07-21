@@ -7,7 +7,18 @@ Editor visual local-first para diseñar interfaces de **Wyss Home**, móvil y es
 - canvas 320×480 y **panel 800×480**;
 - componentes de texto, botón, switch, tarjeta y reloj;
 - **esquema 1.1**: chip, slider, progreso, lista, barras, anillo de estado y barra de matiz;
-- **proyecto incluido**: "Wyss Home Panel 800×480" — el diseño v2 cerrado del panel físico (Inicio, Hogar, Media, Agenda, Sistema, Durmiendo y Conversación), cargable desde el menú Proyecto;
+- **dos proyectos incluidos**, ambos cargables desde el menú Proyecto y con las mismas siete
+  pantallas (Inicio, Hogar, Media, Agenda, Sistema, Durmiendo y Conversación):
+  - **Panel — estado actual del firmware** (`src/panelProject.ts`): espejo fiel de lo que corre
+    hoy en `wyss-home-panel` (commit `01a473a`). Colores y geometría transcritos de
+    `firmware/include/wyss/ui/design_tokens.hpp` y `firmware/src/adapters/lvgl_panel_view.cpp`.
+    Si cambiás el firmware, actualizá este archivo en el mismo commit: es lo único que evita que
+    Studio vuelva a mostrar una interfaz que no existe.
+  - **Panel — diseño propuesto (v2.1)** (`src/designProject.ts`): el mockup cerrado en la sesión
+    de diseño. Incluye habitaciones y control "Colmena" en Hogar, y tabs Biblioteca/Equipos en
+    Media. **Nada de eso está implementado**: requiere extender el contrato v2 (campo `rooms` en
+    `DeviceState`, `devices`/`library` en `MediaState`, acciones `transfer_playback` y
+    `play_context`). Sirve como especificación, no como documentación del panel;
 - selección, arrastre y edición de propiedades;
 - acciones declarativas `navigate` y `wyss.command`;
 - preview para ESP32 y móvil;
