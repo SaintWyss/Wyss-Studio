@@ -1,4 +1,7 @@
-# Wyss Studio
+<h1 align="center">Wyss-Studio</h1>
+
+<p align="center"><strong>Diseño visual para las interfaces de Wyss.</strong><br/>Editor local · interfaces · preview</p>
+
 
 Editor visual local-first para diseñar interfaces de **Wyss Home**, móvil y escritorio desde la PC.
 
