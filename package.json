@@ -3,7 +3,27 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "scripts": {"dev":"vite","build":"tsc -b && vite build","preview":"vite preview"},
-  "dependencies": {"vite":"latest","typescript":"latest","react":"latest","react-dom":"latest","lucide-react":"latest"},
-  "devDependencies": {"@types/react":"latest","@types/react-dom":"latest"}
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "composer:dev": "npm --workspace @wyss-studio/web run dev",
+    "composer:build": "npm --workspace @wyss-studio/web run build",
+    "lint": "npm --workspace @wyss-studio/web run lint",
+    "test": "npm --workspace @wyss-studio/web run test"
+  },
+  "dependencies": {
+    "vite": "latest",
+    "typescript": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "lucide-react": "latest"
+  },
+  "devDependencies": {
+    "@types/react": "latest",
+    "@types/react-dom": "latest"
+  },
+  "workspaces": [
+    "apps/web"
+  ]
 }

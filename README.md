@@ -52,3 +52,12 @@ Wyss Studio no genera HTML para el ESP32. Produce un documento declarativo versi
 Extiende 1.0 con retrocompatibilidad (la importación acepta ambas versiones). Campos nuevos opcionales por componente: `value` (0–100 para slider/progreso/matiz), `accent` (color secundario) e `items` (filas de lista como `"Texto"` o `"Chip|Texto"`, barras como `"Etiqueta|alto%|tope"`, segmentos del anillo como colores). El intérprete LVGL mapea cada kind a su widget: slider→`lv_slider`, progreso→`lv_bar`, anillo→`lv_arc`×n, matiz→`lv_colorwheel` o slider de matiz, lista/barras→objetos reutilizados.
 
 La acción **Publicar** actualmente valida y guarda el proyecto local. El próximo bloque incorpora registro de dispositivos, API de versiones, despliegue por HTTP/WebSocket o MQTT, confirmación y rollback.
+
+
+## Prototipo de editor con API
+
+Además del editor local de la raíz, el repositorio incluye un prototipo independiente en `apps/web` y `apps/api`, incorporado desde una línea de desarrollo alternativa. Ofrece publicación versionada y persistencia SQLite. Los dos editores tienen esquemas y funciones diferentes; no se asume que sus proyectos sean intercambiables.
+
+Para iniciarlo con Docker Compose ejecutá `docker compose up --build` y abrí `http://localhost:8080`. La API no implementa autenticación; el puerto de Compose se limita a la máquina local y no debe exponerse a una red sin incorporar controles de acceso. El renderer de dispositivos no está validado en este prototipo.
+
+Para desarrollar este segundo editor sin Docker: `npm run composer:dev` inicia su frontend y la API puede instalarse con `pip install -e 'apps/api[dev]'` y ejecutarse con `uvicorn app.main:app --app-dir apps/api --reload`. Las pruebas son `npm run test` y `pytest apps/api/tests -q`.
