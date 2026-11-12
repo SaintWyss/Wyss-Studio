@@ -5,6 +5,12 @@
 
 Editor visual local-first para diseñar interfaces de **Wyss Home**, móvil y escritorio desde la PC.
 
+## Tecnologías y diseño
+
+El editor de la raíz utiliza **React, TypeScript y Vite** para construir y previsualizar documentos de interfaz declarativos. La variante independiente de `apps/` combina **React, TypeScript y Vite** con una API **Python, FastAPI y SQLite**; dispone de una configuración opcional con Docker Compose.
+
+Los componentes del editor, el documento JSON versionado y sus acciones declarativas separan la edición visual de su interpretación en dispositivos. Las dos variantes son implementaciones distintas: sus esquemas no se consideran intercambiables. Las vistas actuales del firmware y las propuestas de diseño se distinguen en los proyectos incluidos.
+
 ## Estado funcional
 
 - canvas 320×480 y **panel 800×480**;
